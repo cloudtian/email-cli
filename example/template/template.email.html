@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>【高威胁】【勒索病毒】虚拟机“报销系统”存在疑似勒索病毒触发告警</title>
+        <style>
+    * {
+        box-sizing: border-box;
+    }
+    .box {
+        width: 800px;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 16px;
+        border: 1px solid #EBECF0;
+        font-size: 12px;
+        border-radius: 4px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.05);
+    }
+    .header {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #efefef;
+    }
+    .header .logo {
+        width: 205px;
+        height: 60px;
+    }
+    .header .link {
+        text-decoration: none !important; /* 需要important，不然qq邮箱的样式会覆盖这里 */
+        color: #204ED9;
+    }
+    .header .link + .link {
+        margin-left: 16px;
+    }
+    .body {
+        color: #000000;
+        padding: 16px;
+        margin-top: 24px;
+    }
+    .body .user {
+        line-height: 20px;
+        font-size: 14px;
+    }
+    .body .title {
+        margin-top: 24px;
+        margin-bottom: 8px;
+        font-size: 12px;
+    }
+    .body .content {
+        font-size: 12px;
+        line-height: 24px;
+        background: #F7F8FA;
+        border: 1px solid #EBECF0;
+        width: 608px;
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+    .body .content.bg-img {
+        display: flex;
+        padding-right: 0;
+        height: 132px;
+        align-items: center;
+        background-size: cover;
+    }
+    .body .content .form .key {
+        display: inline-block;
+        width: 88px;
+        color:#666666;
+        font-size: 12px;
+        line-height: 30px;
+    }
+    .body .content .form .key + td {
+        font-size: 12px;
+    }
+    .body .other-tip {
+        background: #FFF2F2;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 2px;
+        padding: 6px 12px;
+        font-size: 12px;
+        color: #D94B4B;
+        line-height: 20px;
+        margin-left: -8px;
+        margin-right: -8px;
+    }
+    .body .other-tip::before {
+        content: '';
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        position: relative;
+        top: 2px;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAASpJREFUOE+dkrFNxEAQRWcRSAeRSZAOAq4EOsAlTAl7HbgDXII7wFRwU4LpwFQACRByESAhYf5HO4fP3ggn9u7fNzP/r4P88wlT7lU1DiI32HdtCCHUy83mbnx2D3xRbSEW2KwkhMvFMDzw8IeIodjjhdna4R2ITuW3SHMkEr9EWgjdId5nZj0PP6v2Byi4NOu43oGpGyvXhB3wDtAV33puFqdgdwwBY0WITcb7CkVbaOUMxGjVtJMXoBVOMwOZJjyuEECduyF4rOHxCR4Z4J/HN9XiHYFAbFwcdWPR6kSkPDXb7oFcEE7Rd96ZnZBgSf8OzUBuJC+3OPw7EnxFfK/9Gmb3OPaF6CsARaq8zaU8++XSZXO869TxPhdYFqTXT5ErgguRfuzNJ/sBvWp8D85knGMAAAAASUVORK5CYII=);
+    }
+    .body .content-title {
+        font-size: 14px; 
+        color: #000000;
+        line-height: 21px;
+        margin-bottom: 8px;
+    }
+    .body .content-value {
+        font-size: 12px; 
+        color: #333333;
+        line-height: 18px;
+    }
+    .body .content-value + .content-title {
+        margin-top: 14px;
+    }
+    .separator {
+        height:1px;
+        opacity: 0.6;
+        background-image: linear-gradient(270deg, #50B371 0%, #1770E6 100%);
+    }
+    .bottom {
+        padding-top: 24px;
+        padding-bottom: 16px;
+    }
+    .footer {
+        width: 800px; 
+        text-align: center;
+        font-size: 12px;
+    }
+    .footer .tip {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: #999999;
+    }
+    .footer .tip .line {
+        flex: 1;
+        height: 1px;
+        background: #EFEFEF;
+        margin-top: 10px;
+    }
+    .footer .official {
+        line-height: 40px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: #333333;
+    }
+    .footer .official a {
+        text-decoration: none;
+        color: #333333;
+        display: inline-block;
+    }
+    .footer .img-box {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #333333;
+        border-radius: 50%;
+    }
+    .footer .img-box img {
+        position: relative;
+        top: 6px;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        vertical-align: baseline; /* 用来覆盖qq邮箱的默认样式 */
+    }
+    .footer .info {
+        display: inline-block;
+        padding-left: 12px;
+        font-size: 14px;
+    }
+    .footer .copyright {
+        line-height: 16px;
+        margin-bottom: 36px;
+        margin-top: 40px;
+        color: #999999;
+    }
+    .alert-obj-state {
+        margin-left: 8px;
+        border-radius: 20px;
+        display: inline-block;
+        min-width: 52px;
+        text-align: center;
+        color: #ffffff;
+        height: 18px;
+        line-height: 18px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .alert-bg.state-SSVandalized {
+        background-color: rgba(140, 14, 14, 0.03)
+    }
+    .alert-bg.state-SSHigh {
+        background-color: rgba(230, 80, 80, 0.03);
+    }
+    .alert-bg.state-SSMiddle {
+        background-color: rgba(255, 149, 0, 0.03);
+    }
+    .alert-bg.state-SSMalfunction {
+        background-color: rgba(255, 213, 0, 0.03);
+    }
+    .alert-bg.state-SSLow {
+        background-color: rgba(98, 109, 140, 0.03);
+    }
+    .alert-bg.state-SSUnprotected {
+        background-color: rgba(192, 195, 204, 0.03);
+    }
+    .alert-obj-state.state-SSVandalized {
+        background-color: #8C0E0E;
+    }
+    .alert-obj-state.state-SSHigh {
+        background-color: #E65050;
+    }
+    .alert-obj-state.state-SSMiddle {
+        background-color: #FF9500;
+    }
+    .alert-obj-state.state-SSMalfunction {
+        background-color: #FFD500;
+    }
+    .alert-obj-state.state-SSLow {
+        background-color: #626D8C;
+    }
+    .alert-obj-state.state-SSProtected {
+        background-color: #00B27A;
+    }
+    .alert-obj-state.state-SSUnprotected {
+        background-color: #C0C3CC;
+    }
+    .lang-en .body .form .key {
+        width: 125px;
+    }
+</style>    </head>
+    <body>
+        
+        <div>
+            <div class="box">
+                <div class="header">
+    <div class="logo">
+        <img alt="logo" width="205px" height="60px" />
+    </div>
+    <div>
+        <a class="link" href="https://10.132.16.11/login" target="_blank">主页</a>
+    </div>
+</div>
+<div class="separator"></div>                 <div class="body">
+                    <div class="user">尊敬的用户，您好！</div>
+
+                    <div class="title">
+                        告警详情如下：
+                    </div>
+                    <div class="content alert-bg state-SSHigh">
+                        <table class="form">
+                            <tr>
+                                <td class="key">告警对象：</td>
+                                <td>
+                                    报销系统
+                                    <span class="alert-obj-state state-SSHigh">高危</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="key">威胁等级：</td>
+                                <td>高威胁</td>
+                            </tr>
+                            <tr>
+                                <td class="key">威胁类型：</td>
+                                <td>勒索病毒</td>
+                            </tr>
+                            <tr>
+                                <td class="key">最新发现时间：</td>
+                                <td>2020-12-22 17:34:33</td>
+                            </tr>
+                            <tr>
+                                <td class="key">威胁事件：</td>
+                                <td>W32&#x2F;Almanhe.D</td>
+                            </tr>
+                            <tr>
+                                <td class="key">感染文件：</td>
+                                <td>d:\d盘\wuaipojietool\吾爱破解工具包\tools\packers\zprot</td>
+                            </tr>
+                            <tr>
+                                <td class="key">虚拟机IP：</td>
+                                <td>102.23.32.4</td>
+                            </tr>
+                            <tr>
+                                <td class="key">所属集群：</td>
+                                <td>10.132.16.11</td>
+                            </tr>
+                            
+                        </table>
+                        <div class="other-tip">
+                            此虚拟机还存在其他安全事件，更多详情可在深信服超融合平台查看
+                        </div>
+                    </div>
+                    
+
+                    <div class="title">
+                        平台应急防护措施：
+                    </div>
+                    <div class="content bg-img">
+                        <div>
+                            <div style="font-weight: 500;color: #00A672;font-size: 14px;">已自动快照</div>
+                            <div style="color: #999999">2021-03-09 12:00:00</div>
+                            <div style="color: #666666">
+                                平台在检测到此疑似勒索病毒时，已为风险资产自动创建快照，预防数据被加密/丢失的风险
+                            </div>
+                        </div>
+                        <div>
+                            <img width="132px" height="132px" alt="snapshot img" src="" />
+                        </div>
+                    </div>
+
+                    <div class="title">
+                        处置建议：
+                    </div>
+                    <div class="content">
+                        <div class="content-title">登录平台查看</div>
+                        <div class="content-value">
+                            建议立即登录平台查看虚拟机安全状态并处置安全事件
+                        </div>
+                    </div>
+
+                    
+                </div>
+                <div class="bottom">
+    <div class="separator"></div>
+    <div style="padding-top: 16px;padding-bottom: 16px;font-size: 14px;">X平台</div>
+</div>            </div>
+            <div class="footer">
+    <div class="tip">
+        <div class="line"></div>
+        <div style="padding-left:30px;padding-right:30px">此为系统邮件，请勿回复</div>
+        <div class="line"></div>
+    </div>
+    <div class="official">
+        <div style="display: flex;align-items: center;">
+            <div style="display: inline-block;height: 64px;">
+                <img width="64px" height="64px" alt="qr code" src="" />
+            </div><div class="info">官方微信</div>
+        </div>
+        <a href="#" target="_blank">
+            <div class="img-box">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAPNJREFUSEvtleENwiAQhe0GbqAjOEIdwQlsJ1En0Q0cQUZwBN3AEXyvAVLJUa5n+NdLLqTAve94tGmzqhzNTP3O779p6+YAKH71wj1GFUQLoNgx6ZpzBE2GBiCJB9EiZAqwhsod2RaadFg/ID/SvhyA4g/krmSBX39i3EsQCUBRXqZWPPRACO+EY4wUQFF2zhNYgjbxJBEyBtBrem4VDw0RwjtxnAiAztti6TpXM3wrBNQQD9A+vYMzVk5/HuOCeuoMsQAkN00WvaH0StS2eN4IBBPgp8iL5l6IBRBdN1nUopyZhsMEcxyqvZo/mvQqqueqA76ydDl5oIW3mwAAAABJRU5ErkJggg==" />
+            </div><div class="info">官方网站</div>
+        </a>
+        <a href="#" target="_blank">
+            <div class="img-box">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAATpJREFUSEvtleFtwkAMhWECGKGdADagG8AIMAFlAtINygRkBDpBYYOO0EzQdgPeJ9knNwpKUrgfSLVkXXI5v2f73uWGg8w2zIw/cIKpiOY3ItsJ59uxnOCoidmNCFbCKXMSvAi8uHsCCtjKDzn2gBY5QVJRfZNRAra28UfjqzyqzecWmp8EgbQSfGrxowUgt5H8TQ7QWP5l33wzn/T+3oeAtUsLKG2E9FkOGCP2Yc+FzTtHawUhmT89/hO0ti17izamNg5aOgdI0NWBFKOuY8qVXlDUJUPW4CzlvwhiAFKMuo7yQ5JdjHWdCciajI7yFNiFhTVNN1qsgBMMOLaX08o+VjUR8L8hW3pZGhokDw3IJFO/qE4Wz36kv2mfrOprSaSQ88/CGi+cawiIpTqqpZosBJ4grTzI06V/BpImSLy9EIBdAAAAAElFTkSuQmCC" />
+            </div><div class="info">官方社区</div>
+        </a>
+    </div>
+    <div class="copyright color-999">
+        Copyright &#169;2012-2021 xxx公司版权所有
+    </div>
+</div>
+        </div>
+  </body>
+</html>

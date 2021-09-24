@@ -3,7 +3,6 @@
 const program = require('commander')
 const version = require('../package.json').version
 
-console.log(`Welcome to use email-cli tool (version: ${version}), use "email-cli --help" show more options.`);
 const generateHTML = function (opt) {
     if (!opt.template || typeof opt.template !== 'string') {
         console.error('template must required');
@@ -22,13 +21,14 @@ program
     .option('-t, --template <template>', 'email template file. required')
     .option('-d, --data [data]', 'json data for template file. ')
     .option('-c, --config [config]', 'json config file for template file. ')
-    .option('-n, --filename [filename]', 'the name of the generated html file. optional')
+    .option('-f, --filename [filename]', 'the name of the generated html file. optional')
     .option('-l, --lang [lang]', 'the language type of the generated html file. [en, zh_CN] optional', 'zh_CN')
     .option('-ls --langjson [langjson]', 'the language json map of the generated html file ')
     .description(`
-    For Example:
-        email-cli -t ./template.html -c ./template-config.json -l en -ls ./langjson.json
-        email-cli -t ./template.html -d "{\"threatLevel\" : \"test\"}" -l en -ls ./langjson.json
+    Welcome to use email-cli tool (version: ${version}), use "email-cli --help" show more options.
+        For Example:
+            email-cli -t ./template.html -c ./template-config.json -l en -ls ./langjson.json
+            email-cli -t ./template.html -d "{\"threatLevel\" : \"test\"}" -l en -ls ./langjson.json
     `)
 
 program.parse(process.argv)

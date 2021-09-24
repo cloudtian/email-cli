@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>{{#lang}}【{{ThreatLevel}}】【{{ThreatType}}】虚拟机“{{VMName}}”存在疑似勒索病毒触发告警{{/lang}}</title>
+        <%- include('./common/css.html'); -%>
+    </head>
+    <body>
+        {{#isEn}}<div class="lang-en">{{/isEn}}
+        {{^isEn}}<div>{{/isEn}}
+            <div class="box">
+                <%- include('./common/header.html'); -%>
+                <div class="body">
+                    <div class="user">{{#lang}}尊敬的用户，您好！{{/lang}}</div>
+
+                    <div class="title">
+                        {{#lang}}告警详情如下：{{/lang}}
+                    </div>
+                    <div class="content alert-bg state-{{SecurityStatusKey}}">
+                        <table class="form">
+                            <tr>
+                                <td class="key">{{#lang}}告警对象：{{/lang}}</td>
+                                <td>
+                                    {{VMName}}
+                                    <span class="alert-obj-state state-{{SecurityStatusKey}}">{{SecurityStatus}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="key">{{#lang}}威胁等级：{{/lang}}</td>
+                                <td>{{ThreatLevel}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">{{#lang}}威胁类型：{{/lang}}</td>
+                                <td>{{ThreatType}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">{{#lang}}最新发现时间：{{/lang}}</td>
+                                <td>{{LastFoundTime}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">{{#lang}}威胁事件：{{/lang}}</td>
+                                <td>{{ThreatEvent}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">{{#lang}}感染文件：{{/lang}}</td>
+                                <td>{{InfectFiles}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">{{#lang}}虚拟机IP：{{/lang}}</td>
+                                <td>{{VMIP}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">{{#lang}}所属集群：{{/lang}}</td>
+                                <td>{{ClusterIP}}</td>
+                            </tr>
+                            
+                        </table>
+                        {{#ExistOtherEvent}}
+                        <div class="other-tip">
+                            {{#lang}}此虚拟机还存在其他安全事件，更多详情可在深信服超融合平台查看{{/lang}}
+                        </div>
+                        {{/ExistOtherEvent}}
+                    </div>
+                    
+
+                    {{#IsSnapshot}}
+                    <div class="title">
+                        {{#lang}}平台应急防护措施：{{/lang}}
+                    </div>
+                    <div class="content bg-img">
+                        <div>
+                            <div style="font-weight: 500;color: #00A672;font-size: 14px;">{{#lang}}已自动快照{{/lang}}</div>
+                            <div style="color: #999999">{{AutoSnapshotTime}}</div>
+                            <div style="color: #666666">
+                                {{#lang}}平台在检测到此疑似勒索病毒时，已为风险资产自动创建快照，预防数据被加密/丢失的风险{{/lang}}
+                            </div>
+                        </div>
+                        <div>
+                            <img width="132px" height="132px" alt="snapshot img" src="" />
+                        </div>
+                    </div>
+                    {{/IsSnapshot}}
+
+                    <div class="title">
+                        {{#lang}}处置建议：{{/lang}}
+                    </div>
+                    <div class="content">
+                        <div class="content-title">{{#lang}}登录平台查看{{/lang}}</div>
+                        <div class="content-value">
+                            {{#lang}}建议立即登录平台查看虚拟机安全状态并处置安全事件{{/lang}}
+                        </div>
+                    </div>
+
+                    
+                </div>
+                <%- include('./common/bottom.html'); -%>
+            </div>
+            <%- include('./common/footer.html'); -%>
+        </div>
+  </body>
+</html>

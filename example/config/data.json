@@ -1,0 +1,16 @@
+{
+    "ThreatLevel": "高威胁",
+    "ThreatType": "勒索病毒",
+    "ThreatEvent": "W32/Almanhe.D",
+    "LastFoundTime": "2020-12-22 17:34:33",
+    "VMName": "报销系统",
+    "InfectFiles": "d:\\d盘\\wuaipojietool\\吾爱破解工具包\\tools\\packers\\zprot",
+    "VMIP": "102.23.32.4",
+    "ClusterIP": "10.132.16.11",
+    "ExistOtherEvent": true,
+    "IsSnapshot": true,
+    "AutoSnapshotTime": "2021-03-09 12:00:00",
+    "Year": 2021,
+    "SecurityStatusKey": "SSHigh",
+    "SecurityStatus": "高危"
+}

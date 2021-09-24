@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+const program = require('commander')
+
+program
+    .command('p2b <picture>')
+    .description('convert the image to base64 format')
+    .action((picture) => require('./p2b')(picture))
+    .parse(process.argv)
